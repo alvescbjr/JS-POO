@@ -13,10 +13,6 @@ export class ContaCorrente extends Conta{
         let taxa = 1.1;
         const valorSacado = valor * taxa;
 
-        if (this._saldo <= valorSacado) {
-            return;
-        }
-        this._saldo -= valorSacado;
-        return valorSacado;
+        return this._sacar(valor, taxa);
     }
 }
