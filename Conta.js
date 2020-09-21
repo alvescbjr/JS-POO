@@ -1,3 +1,4 @@
+//Classe abstrata
 export class Conta{
 
     constructor(saldoInicial, cliente, agencia) {
@@ -9,10 +10,10 @@ export class Conta{
         this._cliente = cliente;
         this._agencia = agencia;
     }
-   
+    
+    //método abstrato
     sacar(valor) {
-        const taxa = 1;
-        return this._sacar(valor, taxa);
+        throw new Error("O método sacar da classe Conta é abstrato!");
     }
 
     _sacar(valor, taxa) {
@@ -24,16 +25,17 @@ export class Conta{
 
         return 0;
     }
+
     depositar(valor) {
         if (valor <= 0) {
             return;
         }
         this._saldo += valor;
     }
+
     tranferir(valor, conta) {
         this.sacar(valor);
         conta.depositar(valor);
     }
-
-    
+        
 }
